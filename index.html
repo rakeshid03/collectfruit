@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- SEO Meta Tags -->
+  <title>fruit game</title>
+  <meta name="description" content="you've 30s to pick up fruits before they disappear game made by @rakeshid03.">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/jpg" href="favicon.png" />
+</head>
+
+<body>
+  <!-- Header with live score and time left countdown-->
+  <header>Collect Fruits</header>
+  <div class="live-update">
+    <div id="countdown">
+      <p>&#9201;</p>: 30
+    </div>
+    <div id="score">Score: ₹0</div>
+  </div>
+  
+  <!-- Game box, fruits appear here-->
+  <main id="game">
+    <!-- Intro Card to start game, plus how to play discription -->
+    <div id="introCard" class="card">
+      <h2>WELCOME!</h2>
+      <p>Pick up fruits before they disappear.</p>
+      <p>Each fruit has a different price.</p>
+      <p>You have 30 seconds to collect as many as you can!</p>
+      <p>Make a high score among other players to win.</p>
+      <button onclick="startGame()">Play</button>
+    </div>
+  </main>
+  
+  <!-- Settings Button -->
+  <button id="settingsBtn">⚙️</button>
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="hidden">
+    <div class="modal-content">
+      <h3>Settings</h3>
+      <label for="vibrationToggle" class="switch">
+        <input type="checkbox" id="vibrationToggle" checked>
+        Vibration
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="soundToggle" checked>
+        Sound (not added)
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        Dark Mode
+      </label>
+      
+      <strong>Difficulty:</strong>
+      <div class="level">
+        <label class="radio">
+          <input type="radio" name="difficulty" value="easy" checked>
+          <span class="name">Easy</span>
+        </label>
+        
+        <label class="radio">
+          <input type="radio" name="difficulty" value="hard">
+          <span class="name">Hard</span>
+        </label>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
+  <!--Contact me-->
+  <footer class="contact">
+    <a href="#" target="_self">Made by @Rakeshid03</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+/* Custom  Properties (Design Tokens) */
+:root {
+  --font-fira-mono: sans-serif;
+  --font-message: "Winky Sans", sans-serif;
+  --c-white: #fff;
+  --c-black: hsl(0, 0%, 10%);
+  --c-bg: #e6eef9;
+  --c-primary: #43A047;
+  --c-secondary: #01C009;
+  --c-forebackground: #E8F5E9;
+  --c-gray: #292b40;
+  --border-color: #C5CDD8;
+}
+
+/* Dark mode using system preference */
+body.dark-mode {
+  --c-white: #0a0a0a;
+  --c-black: #f0f0f0;
+  --c-bg: #1A1A1A;
+  --c-primary: #60CD65;
+  --c-secondary: #42CB47;
+  --c-forebackground: #D6EAD8;
+  --c-gray: #292b40;
+  --border-color: #292b40;
+}
+
+/* Dark mode using system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+   --c-white: #0a0a0a;
+  --c-black: #f0f0f0;
+  --c-bg: #1A1A1A;
+  --c-primary: #6DDB72;
+  --c-secondary: #42CB47;
+  --c-forebackground: #D6EAD8;
+  --c-gray: #292b40;
+  --border-color: #292b40;
+  }
+}
+
+/* Reset and Global Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='hsl(0, 0%25, 20%25)' opacity='0.1' width='20' height='20' viewBox='-5 -5 10 10'%3E%3Ccircle id='dot' r='1' /%3E%3Cuse href='%23dot' x='5' y='5' /%3E%3Cuse href='%23dot' x='-5' y='5' /%3E%3Cuse href='%23dot' x='5' y='-5' /%3E%3Cuse href='%23dot' x='-5' y='-5' /%3E%3C/svg%3E"), var(--c-bg);
+  background-size: 10px;
+  font-family: var(--font-fira-mono);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  ;
+}
+
+/* Links and Text Selection */
+a {
+  text-decoration: none;
+  color: var(--c-black)
+}
+
+::selection {
+  color: var(--c-white);
+  background: var(--c-secondary)
+}
+
+/* Header Styling */
+header {
+  background: linear-gradient(0deg, rgba(0, 60, 60, 0) 0%, var(--c-bg) 60%);
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  color: var(--c-primary);
+  width: 100%;
+  height: 3.7rem;
+  padding: 0 0.6rem;
+  font-weight: 650;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  text-align: center
+}
+
+/* Main Game box */
+#game {
+  position: fixed;
+  top: 3.5rem;
+  bottom: 2.6rem;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word
+}
+
+/* Fruits Styling */
+.fruit {
+  position: absolute;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s ease;
+  animation: easeIn .3s ease-out
+}
+
+.fruit.clicked {
+  animation: popOut .3s ease-out
+}
+
+/* Fruits in and out animation*/
+@keyframes easeIn {
+  from {
+    transform: scale(0);
+    opacity: 0
+  }
+  
+  to {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+    opacity: 1
+  }
+  
+  100% {
+    transform: scale(1.5);
+    opacity: 0
+  }
+}
+
+/* Show Score and Countdown in Header */
+.live-update {
+  display: flex;
+  position: fixed;
+  gap: .5rem;
+  top: .7rem;
+  right: .7rem;
+  z-index: 10
+}
+
+#score {
+  background: var(--c-white);
+  color: var(--c-primary);
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1)
+}
+
+#countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-primary);
+  background: var(--c-forebackground);
+  padding: 0 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1)
+}
+
+#countdown p {
+  font-size: 1.5rem;
+  margin-right: .2rem;
+  margin-bottom: .1rem
+}
+
+/* Intro Welcome Card Styling */
+.card {
+  max-width: 85%;
+  width: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--c-forebackground);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  text-align: center;
+  z-index: 20
+}
+
+.card>*+* {
+  margin-top: .5rem
+}
+
+.card h2 {
+  margin-bottom: 1rem
+}
+
+.card p {
+  color: var(--c-gray);
+}
+
+.card button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: .6rem 1.2rem;
+  border: none;
+  border-radius: .5rem;
+  background: var(--c-primary);
+  color: var(--c-white);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer
+}
+
+/*Shake animation*/
+@keyframes shake {
+  
+  from,
+  to {
+    transform: scale(1, 1)
+  }
+  
+  25% {
+    transform: scale(.9, 1.1)
+  }
+  
+  50% {
+    transform: scale(1.1, .9)
+  }
+  
+  75% {
+    transform: scale(.95, 1.05)
+  }
+}
+
+.card button:hover {
+  animation: shake .3s ease;
+  background-color: var(--c-secondary)
+}
+
+/*Setting Button*/
+#settingsBtn {
+  position: fixed;
+  bottom: .4rem;
+  right: 1rem;
+  font-size: 1.1rem;
+  background: #E8F5E9;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.4rem;
+  user-select: none;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+  transition: transform 0.3s ease;
+}
+
+/*Setting Button rotate animation*/
+#settingsBtn.rotated {
+  transform: rotate(180deg);
+}
+
+/*Setting box styling*/
+#settingsModal {
+  user-select: none;
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  background: var(--c-white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--c-black);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  width: 240px;
+  transition: opacity 0.3s ease;
+}
+
+#settingsModal.hidden {
+  display: none;
+}
+
+#settingsModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#settingsModal h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+
+/*Toggle Styling*/
+.switch {
+  --false: var(--c-white);
+  --true: var(--c-primary);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  height: 1.7rem;
+  width: 3rem;
+  background-color: var(--c-forebackground);
+  position: relative;
+  border-radius: 5rem;
+  cursor: pointer;
+}
+
+input[type=checkbox]::before {
+  content: '';
+  display: block;
+  height: 1.1rem;
+  width: 1.1rem;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: calc(1rem/2 + .3rem);
+  background-color: var(--false);
+  border-radius: 2rem;
+  transition: all .3s ease;
+}
+
+input[type=checkbox]:checked::before {
+  background-color: var(--true);
+  left: calc(100% - (1rem/2 + .3rem));
+}
+
+/* Easy or Hard Ration Styling*/
+.level {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: #EEE;
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  width: 205px;
+  font-size: 14px;
+}
+
+.level .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.level .radio input {
+  display: none;
+}
+
+.level .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: rgba(51, 65, 85, 1);
+  transition: all .15s ease-in-out;
+}
+
+.level .radio input:checked+.name {
+  color: var(--c-primary);
+  background-color: #fff;
+  font-weight: 600;
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  width: 100%;
+  padding: .8rem 0;
+  position: absolute;
+  bottom: 2px;
+  font-size: .9rem;
+}

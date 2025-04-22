@@ -75,18 +75,66 @@ a {
 /* Header Styling */
 header {
   background: linear-gradient(0deg, rgba(0, 60, 60, 0) 0%, var(--c-bg) 60%);
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   color: var(--c-primary);
   width: 100%;
   height: 3.7rem;
   padding: 0 0.6rem;
-  font-weight: 650;
-  font-size: 1.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+/* Logo Styling */
+.logo {
+  max-width: 100%;
+  word-break: break-word;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Live Update Container */
+.live-update {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: fit-content;
+}
+
+/* Countdown Box */
+#countdown {
   display: flex;
   align-items: center;
-  text-align: center
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-primary);
+  background: var(--c-forebackground);
+  padding: .1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#countdown p {
+  font-size: 1.5rem;
+  margin: 0 0.3rem 0.2rem 0;
+}
+
+/* Score Box */
+#score {
+  background: var(--c-white);
+  color: var(--c-primary);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Main Game box */
@@ -139,44 +187,6 @@ header {
     transform: scale(1.5);
     opacity: 0
   }
-}
-
-/* Show Score and Countdown in Header */
-.live-update {
-  display: flex;
-  position: fixed;
-  gap: .5rem;
-  top: .7rem;
-  right: .7rem;
-  z-index: 10
-}
-
-#score {
-  background: var(--c-white);
-  color: var(--c-primary);
-  padding: .5rem 1rem;
-  border-radius: 10px;
-  font-weight: 500;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .1)
-}
-
-#countdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--c-primary);
-  background: var(--c-forebackground);
-  padding: 0 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .1)
-}
-
-#countdown p {
-  font-size: 1.5rem;
-  margin-right: .2rem;
-  margin-bottom: .1rem
 }
 
 /* Intro Welcome Card Styling */

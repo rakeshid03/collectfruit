@@ -20,4 +20,4 @@
 - 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+Welcome contributions from the open-source community to help make this project even better. Feel free to fork this project to suggest new features, improve the UI/UX, remove bugs. Pull requests are welcome!
